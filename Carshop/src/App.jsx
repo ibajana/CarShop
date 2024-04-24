@@ -4,30 +4,44 @@ import viteLogo from '/vite.svg'
 import './App.css'
 
 function App() {
-  const [count, setCount] = useState(0)
 
   return (
     <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      <DarkButton></DarkButton>
+      <h1>RECEPCION DE AUTOS</h1>
+      <hr />
+      <Client />
+
+    </>
+  )
+}
+
+function DarkButton() {
+  return (
+    <button>Cambiar el tema</button>
+  )
+}
+
+function Client() {
+  const [name, Setname] = useState("")
+  const [email, Setemail] = useState("")
+  const [phone, Setphone] = useState("")
+  return (
+    <>
+      <form action="">
+        <label>Nombre del cliente:
+          <input type="text" value={name} onChange={(e) => { Setname(e.target.value) }} />
+        </label>
+        <label>Email:
+          <input type="text" value={email} onChange={(e) => { Setemail(e.target.value) }} />
+        </label>
+        <label>Nombre del cliente:
+          <input type="text" value={phone} onChange={(e) => { Setphone(e.target.value) }} />
+        </label>
+      </form>
+      <h2>Su nombre es: {name} </h2>
+      <h2>Su email es: {email} </h2>
+      <h2>Su numero de telefono es: {phone} </h2>
     </>
   )
 }
