@@ -29,13 +29,10 @@ function DarkButton() {
 
 
 function Form({ children }) {
-  const [complete,setcomplete]=useState(false)
-  const handleComplete = ()=>{
-    setcomplete(true)
-  }
+ 
   return (
     <>
-      <form id='formulario' handleComplete={handleComplete}>
+      <form id='formulario'>
         {children}
       </form>
     </>
@@ -44,24 +41,32 @@ function Form({ children }) {
 
 function Client() {
 
-  const handleSubmit = (e) => {
-    e.preventDefault()
-    console.log("evitando el submit")
-  }
+  const [complete,setcomplete]=useState(true)
   const [name, Setname] = useState("")
   const [email, Setemail] = useState("")
   const [phone, Setphone] = useState("")
-
+ 
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    console.log("evitando el submit")
+    setcomplete(false)
+  }
   return (
-    <div className='container'>
-      <h2>Datos del cliente</h2>
-      <label>Nombre del cliente:</label>
-      <input type="text" value={name} onChange={(e) => { Setname(e.target.value) }} />
-      <label>Email:</label>
-      <input type="email" value={email} onChange={(e) => { Setemail(e.target.value) }} />
-      <label>Numero del cliente:</label>
-      <input type='text' value={phone} onChange={(e) => { Setphone(e.target.value) }} />
-      <button type="submit" onClick={handleSubmit}>Siguiente</button>
+    <div>
+      {complete?
+      <div className='container'>
+        <h2>Datos del cliente</h2>
+       <label>Nombre del cliente:</label>
+       <input type="text" value={name} onChange={(e) => { Setname(e.target.value) }} />
+       <label>Email:</label>
+       <input type="email" value={email} onChange={(e) => { Setemail(e.target.value) }} />
+       <label>Numero del cliente:</label>
+       <input type='text' value={phone} onChange={(e) => { Setphone(e.target.value) }} />
+       <button type="submit" onClick={handleSubmit}>Siguiente</button>
+      </div>
+       :
+      <Vehicle/>
+      }
     </div>
   )
 }
