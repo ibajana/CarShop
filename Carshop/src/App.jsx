@@ -1,6 +1,5 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+import { useForm } from "react-hook-form"
 import './App.css'
 
 
@@ -8,10 +7,9 @@ function App() {
 
   return (
     <>
-      <DarkButton></DarkButton>
+      <Button text='Modo Oscuro' handle={handleConsole}></Button>
       <h1>RECEPCION DE AUTOS</h1>
       <hr />
-
       <Form>
         <Client>
         </Client>
@@ -20,9 +18,11 @@ function App() {
   )
 }
 
-function DarkButton() {
+const handleConsole = () => { console.log("hola") }
+
+function Button({ text = "I'm a button change my name with my prop (text)", handle }) {
   return (
-    <button>Cambiar el tema</button>
+    <button onClick={handle}>{text}</button>
   )
 }
 
@@ -40,47 +40,51 @@ function Form({ children }) {
 }
 
 function Client() {
+  const [complete, setComplete] = useState(true)
+  const {
+    register,
+    handleSubmit,
+    watch,
+    formState: { errors },
+  } = useForm()
 
-  const [completeClient, setcompleteClient] = useState(true)
-  const [name, Setname] = useState("")
-  const [email, Setemail] = useState("")
-  const [phone, Setphone] = useState("")
+  const submitfunc = handleSubmit(
+    (data)=>{console.log(data)
+      setComplete(false)
+    }
+  )
 
-  const handleSubmit = (e) => {
-    e.preventDefault()
-    console.log("evitando el submit")
-    setcompleteClient(false)
-  }
-  return (
+  return (complete?
     <div className='container'>
-      {completeClient ?
-        //<div className='container'>
-        <>
-          <h2>Datos del cliente</h2>
-          <label>Nombre del cliente:</label>
-          <input type="text" value={name} onChange={(e) => { Setname(e.target.value) }}/>
-          <label>Email:</label>
-          <input type="email" value={email} onChange={(e) => { Setemail(e.target.value) }}/>
-          <label>Numero del cliente:</label>
-          <input type='text' value={phone} onChange={(e) => { Setphone(e.target.value) }} />
-          <button type="submit" onClick={handleSubmit}>Siguiente</button>
-        </>
-        :
-        <Vehicle name={name} email={email} phone={phone} />
-      }
-    </div>
+
+      <h2>Datos del cliente</h2>
+      <label>Nombre del cliente:</label>
+      <input type="text" autoComplete='off' {...register("name", {required:true, minLength: 2})} />
+      <label>Email:</label>
+      <input type="email" autoComplete='off' {...register("email")} />
+      <label>Celular:</label>
+      <input type='text' {...register("phone",{required:true})}/>
+      <label>Identificación:</label>
+      <input type='text' {...register("id")}/>
+      <Button text='Siguiente' handle={submitfunc}></Button>
+    </div>:
+    <Vehicle></Vehicle>
   )
 }
 
-function Vehicle({name,email,phone}) {
+function Vehicle({ name, email, phone }) {
   const [completeVehicle, setCompleteVehicle] = useState(true)
+  const [brand, setBrand] = useState("")
+  const [model, setModel] = useState("")
+  const [placa, setPlaca] = useState("")
+  const [gas, setGas] = useState("")
+
+
   const handleSubmit = (e) => {
     e.preventDefault()
     console.log(brand)
     setCompleteVehicle(false)
   }
-
-  const [brand,setBrand]=useState("")
 
   return (
     <div className='container' >
@@ -88,56 +92,46 @@ function Vehicle({name,email,phone}) {
         <>
           <h2>Datos del Vehículo</h2>
           <label >Marca:</label>
-          <input type="text" value={brand} onChange={(e) => { setBrand(e.target.value) }}/>
+          <input type="text" value={brand} onChange={(e) => { setBrand(e.target.value) }} />
           <label>Modelo:</label>
-          <input type="text" />
+          <input type="text" value={model} onChange={(e) => { setModel(e.target.value) }} />
           <label >Placa:</label>
-          <input type="text" />
+          <input type="text" value={placa} onChange={(e) => { setPlaca(e.target.value) }} />
           <label >Nivel de Gasolina:</label>
-          <input type="text" />
+          <input type="text" value={gas} onChange={(e) => { setGas(e.target.value) }} />
           <label > Observaciones</label>
           <textarea cols="30" rows="10"></textarea>
-          <button type="submit" onClick={handleSubmit}>Siguiente</button>
-          <button  type='button'>Regresar</button>
+          <Button text='Siguiente' handle={handleSubmit} />
         </> :
-        <Services  name={name} email={email} phone={phone} />
+        <Services name={name} email={email} phone={phone} />
       }
     </div>
   )
 }
 
 function Services() {
+  const handlePrint = (e) => {
+    e.preventDefault()
+  }
+
   return (
     <div>
       <h2>Servicios Disponibles</h2>
-      <div>
-        <input type="checkbox" value="Aceite" />
-        <label >Cambio de Aceite</label>
-      </div>
-      <div>
-        <input type="checkbox" value="Freno" />
-        <label >Cambio de frenos</label>
-      </div>
-      <div>
-        <input type="checkbox" value="Alineacion" />
-        <label >Alineacion</label>
-      </div>
-      <div>
-        <input type="checkbox" value="Balanceo" />
-        <label >Balanceo</label>
-      </div>
-      <div>
-        <input type="checkbox" value="Diagnostico" />
-        <label >Diagnostico general</label>
-      </div>
-      <div>
-        <input type="checkbox" value="Electrico" />
-        <label >Revision sistema electrico</label>
-      </div>
-      <div>
-        <input type="checkbox" value="Suspension" />
-        <label >Revisión de la suspensión</label>
-      </div>
+      <input type="checkbox" value="Aceite" />
+      <label >Cambio de Aceite</label>
+      <input type="checkbox" value="Freno" />
+      <label >Cambio de frenos</label>
+      <input type="checkbox" value="Alineacion" />
+      <label >Alineacion</label>
+      <input type="checkbox" value="Balanceo" />
+      <label >Balanceo</label>
+      <input type="checkbox" value="Diagnostico" />
+      <label >Diagnostico general</label>
+      <input type="checkbox" value="Electrico" />
+      <label >Revision sistema electrico</label>
+      <input type="checkbox" value="Suspension" />
+      <label >Revisión de la suspensión</label>
+      <button onClick={handlePrint}>Imprimir Datos Finales</button>
     </div>
   )
 }
