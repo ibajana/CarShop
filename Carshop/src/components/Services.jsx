@@ -2,6 +2,9 @@ import { useState } from 'react';
 import { useForm } from "react-hook-form";
 import { FinalPrint } from './FinalPrint';
 import { serviceContext } from './serviceContext';
+import { Button, FormControl, FormGroup, FormLabel, FormText, Form } from 'react-bootstrap';
+
+
 
 export function Services() {
 
@@ -21,31 +24,34 @@ export function Services() {
   );
 
   return (completeServices ?
-    <div>
-      <h2>Servicios Disponibles</h2>
-      <input type="checkbox" {...register("oil")} />
-      <label>Cambio de Aceite</label>
+    <>
+      <h2 className='fw-bold'>Servicios Disponibles</h2>
+      <Form.Group className="mb-3" controlId="formBasicCheckbox">
+        <Form.Check type="checkbox" label="Cambio de Aceite" {...register("Cambio de Aceite")}/>
+      </Form.Group>
+      <Form.Group className="mb-3" controlId="formBasicCheckbox">
+        <Form.Check type="checkbox" label="Cambio de Frenos" {...register("Cambio de Frenos")}/>
+      </Form.Group>
+      <Form.Group className="mb-3" controlId="formBasicCheckbox">
+        <Form.Check type="checkbox" label="Alineacion" {...register("Alineacion")}/>
+      </Form.Group>
+      <Form.Group className="mb-3" controlId="formBasicCheckbox">
+        <Form.Check type="checkbox" label="Balanceo" {...register("Balanceo")}/>
+      </Form.Group>
+      <Form.Group className="mb-3" controlId="formBasicCheckbox">
+        <Form.Check type="checkbox" label="Diagnostico General" {...register("Diagnostico General")}/>
+      </Form.Group>
+      <Form.Group className="mb-3" controlId="formBasicCheckbox">
+        <Form.Check type="checkbox" label="Revision del Sistema Electrico" {...register("Revision del Sistema Electrico")}/>
+      </Form.Group>
+      <Form.Group className="mb-3" controlId="formBasicCheckbox">
+        <Form.Check type="checkbox" label="Revisión de Suspensión" {...register("Revisión de Suspensión")}/>
+      </Form.Group>
+  
+      <Button variant="secondary" size="lg" onClick={handlePrint}>Imprimir Datos Finales</Button>
 
-      <input type="checkbox" {...register("frenos")} />
-      <label>Cambio de frenos</label>
-
-      <input type="checkbox" {...register("alineacion")} />
-      <label>Alineacion</label>
-
-      <input type="checkbox" {...register("balanceo")} />
-      <label>Balanceo</label>
-
-      <input type="checkbox" {...register("generalD")} />
-      <label>Diagnostico general</label>
-
-      <input type="checkbox" {...register("electrico")} />
-      <label>Revision sistema electrico</label>
-
-      <input type="checkbox" {...register("suspension")} />
-      <label>Revisión de la suspensión</label>
-
-      <button onClick={handlePrint}>Imprimir Datos Finales</button>
-    </div> :
+    </>
+    :
     <>
       <serviceContext.Provider value={datoServices}>
         <FinalPrint />

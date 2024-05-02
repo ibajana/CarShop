@@ -1,14 +1,16 @@
 //import React from 'react';
 
+import { Form } from "react-bootstrap";
+
 // eslint-disable-next-line react/prop-types
-export function Form({ children }) {
+export function Myform({ children }) {
 
   return (
     <>
       <h6>Los campos señalados con (*) son OBLIGATORIOS</h6>
-      <form id='formulario'>
+      <Form id='formulario' className="container">
         {children}
-      </form>
+      </Form>
     </>
   );
 }

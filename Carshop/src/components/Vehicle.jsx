@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useForm } from "react-hook-form";
 import { Services } from './Services';
 import { vehicleContext } from './vehicleContext';
+import { Button, FormControl, FormGroup, FormLabel, FormText, InputGroup } from 'react-bootstrap';
 
 export function Vehicle() {
   const [completeVehicle, setCompleteVehicle] = useState(true);
@@ -19,40 +20,44 @@ export function Vehicle() {
   );
 
   return (
-    <div className='container'>
-      {completeVehicle ?
+    
+      completeVehicle ?
+      
         <>
-          <h2>Datos del Vehículo</h2>
-          <label>*Marca:</label>
-          <input type="text" {...register("brand", { required: true })} />
-          {errors.brand?.type === "required" && (<span>La marca del vehiculo es obligatoria</span>)}
-
-
-          <label>*Modelo:</label>
-          <input type="text" {...register("model", { required: true })} />
-          {errors.model?.type === "required" && (<span>El modelo del vehiculo es obligatorio</span>)}
-
-
-          <label>*Placa:</label>
-          <input type="text" {...register("placa", { required: true })} />
-          {errors.placa?.type === "required" && (<span>La placa del vehiculo es obligatoria</span>)}
-
-
-          <label>*Nivel de Gasolina:</label>
-          <input type="text" {...register("gas", { required: true })} />
-          {errors.gas?.type === "required" && (<span>El nivel de gasolina del vehiculo es obligatorio</span>)}
-
-
-          <label>Observaciones</label>
-          <textarea cols="30" rows="10" {...register("observation", { maxLength: 150 })}></textarea>
-          <button onClick={submitfunc}>Siguiente</button>
+          <h2 className='fw-bold'>Datos del Vehículo</h2>
+          <FormGroup>
+            <FormLabel>*Marca:</FormLabel>
+            <FormControl type="text" {...register("brand", { required: true })} />
+            {errors.brand?.type === "required" && (<FormText>La marca del vehiculo es obligatoria</FormText>)}
+          </FormGroup>
+          <FormGroup>
+            <FormLabel>*Modelo:</FormLabel>
+            <FormControl type="text" {...register("model", { required: true })} />
+            {errors.model?.type === "required" && (<FormText>El modelo del vehiculo es obligatorio</FormText>)}
+          </FormGroup>
+          <FormGroup>
+            <FormLabel>*Placa:</FormLabel>
+            <FormControl type="text" {...register("placa", { required: true })} />
+            {errors.placa?.type === "required" && (<FormText>La placa del vehiculo es obligatoria</FormText>)}
+          </FormGroup>
+          <FormGroup>
+            <FormLabel>*Nivel de Gasolina:</FormLabel>
+            <FormControl type="text" {...register("gas", { required: true })} />
+            {errors.gas?.type === "required" && (<FormText>El nivel de gasolina del vehiculo es obligatorio</FormText>)}
+          </FormGroup>
+          <InputGroup>
+            <FormLabel className='pe-2'>Observaciones</FormLabel>
+            <FormControl as="textarea" {...register("observation", { maxLength: 150 })}></FormControl>
+          </InputGroup>
+          <Button variant="secondary" size="lg" onClick={submitfunc}>Siguiente</Button>
         </>
+      
         :
         <>
           <vehicleContext.Provider value={datosVehicles}>
             <Services></Services>
           </vehicleContext.Provider>
-        </>}
-    </div>
+        </>
+    
   );
 }

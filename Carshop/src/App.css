@@ -1,16 +1,3 @@
 
-#formulario{
-  background-color: #61dafbaa;
-  border:solid 10px;
-  padding: 20px;
-  display: flex;
-  justify-content: center;
-  margin: 20px;
- 
-}
-.container{
-  display: flex;
-  flex-direction: column;
-  row-gap: 20px;
-}
+
 

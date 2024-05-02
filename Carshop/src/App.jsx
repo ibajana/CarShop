@@ -1,6 +1,7 @@
 import './App.css'
-import { Form } from './components/Form'
+import { Myform } from './components/Form'
 import { Client} from './components/Client'
+import { Button } from 'react-bootstrap';
 
 
 
@@ -8,13 +9,13 @@ function App() {
 
   return (
     <>
-      <button >Modo Oscuro</button>
+      <Button>Modo Oscuro</Button>
       <h1>RECEPCION DE AUTOS</h1>
       <hr />
-      <Form>
+      <Myform>
         <Client>
         </Client>
-      </Form>
+      </Myform>
     </>
   )
 }
