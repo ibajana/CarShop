@@ -8,7 +8,7 @@ export function Myform({ children }) {
   return (
     <>
       <h6>Los campos señalados con (*) son OBLIGATORIOS</h6>
-      <Form id='formulario' className="container">
+      <Form className="container ">
         {children}
       </Form>
     </>

@@ -23,7 +23,6 @@ export function Client() {
 
   return (complete ?
     <>
-      
         <h2 className='fw-bold'>Datos del cliente</h2>
         <FormGroup>
           <FormLabel className='fw-bold'>*Nombre del cliente:</FormLabel>
@@ -50,7 +49,7 @@ export function Client() {
         <FormLabel>*Identificación</FormLabel>
         <InputGroup>
           <Form.Select{...register("idType")}>
-            <option value="cedula">Cédula</option>
+            <option value="Cédula">Cédula</option>
             <option value="ruc">RUC</option>
             <option value="pasaporte">Pasaporte</option>
           </Form.Select>
@@ -58,9 +57,7 @@ export function Client() {
           {errors.id?.type === "required" && (<Form.Text>El Id del cliente es obligatorio</Form.Text>)}
           {errors.id?.type === "pattern" && (<Form.Text>El número de identificación no es válido</Form.Text>)}
         </InputGroup>
-        <Button variant="secondary" size="lg" onClick={submitfunc}>Siguiente</Button>
-      
-
+        <Button className='col-12 mt-2' variant="secondary" size="lg" onClick={submitfunc}>Siguiente</Button>
     </> :
     <>
       <clientContext.Provider value={datosClient}>

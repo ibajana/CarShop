@@ -49,7 +49,7 @@ export function Vehicle() {
             <FormLabel className='pe-2'>Observaciones</FormLabel>
             <FormControl as="textarea" {...register("observation", { maxLength: 150 })}></FormControl>
           </InputGroup>
-          <Button variant="secondary" size="lg" onClick={submitfunc}>Siguiente</Button>
+          <Button className='col-12 mt-2' variant="secondary" size="lg" onClick={submitfunc}>Siguiente</Button>
         </>
       
         :

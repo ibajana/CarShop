@@ -27,28 +27,28 @@ export function Services() {
     <>
       <h2 className='fw-bold'>Servicios Disponibles</h2>
       <Form.Group className="mb-3" controlId="formBasicCheckbox">
-        <Form.Check type="checkbox" label="Cambio de Aceite" {...register("Cambio de Aceite")}/>
+        <Form.Check type="checkbox" label="Cambio de Aceite" {...register("Cambio de Aceite")} />
       </Form.Group>
       <Form.Group className="mb-3" controlId="formBasicCheckbox">
-        <Form.Check type="checkbox" label="Cambio de Frenos" {...register("Cambio de Frenos")}/>
+        <Form.Check type="checkbox" label="Cambio de Frenos" {...register("Cambio de Frenos")} />
       </Form.Group>
       <Form.Group className="mb-3" controlId="formBasicCheckbox">
-        <Form.Check type="checkbox" label="Alineacion" {...register("Alineacion")}/>
+        <Form.Check type="checkbox" label="Alineacion" {...register("Alineacion")} />
       </Form.Group>
       <Form.Group className="mb-3" controlId="formBasicCheckbox">
-        <Form.Check type="checkbox" label="Balanceo" {...register("Balanceo")}/>
+        <Form.Check type="checkbox" label="Balanceo" {...register("Balanceo")} />
       </Form.Group>
       <Form.Group className="mb-3" controlId="formBasicCheckbox">
-        <Form.Check type="checkbox" label="Diagnostico General" {...register("Diagnostico General")}/>
+        <Form.Check type="checkbox" label="Diagnostico General" {...register("Diagnostico General")} />
       </Form.Group>
       <Form.Group className="mb-3" controlId="formBasicCheckbox">
-        <Form.Check type="checkbox" label="Revision del Sistema Electrico" {...register("Revision del Sistema Electrico")}/>
+        <Form.Check type="checkbox" label="Revision del Sistema Electrico" {...register("Revision del Sistema Electrico")} />
       </Form.Group>
       <Form.Group className="mb-3" controlId="formBasicCheckbox">
-        <Form.Check type="checkbox" label="Revisión de Suspensión" {...register("Revisión de Suspensión")}/>
+        <Form.Check type="checkbox" label="Revisión de Suspensión" {...register("Revisión de Suspensión")} />
       </Form.Group>
-  
-      <Button variant="secondary" size="lg" onClick={handlePrint}>Imprimir Datos Finales</Button>
+
+      <Button className='col-12' variant="secondary" size="lg" onClick={handlePrint}>Imprimir Datos Finales</Button>
 
     </>
     :
