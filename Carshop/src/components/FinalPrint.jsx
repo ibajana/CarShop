@@ -70,7 +70,7 @@ export function FinalPrint() {
         </tbody>
       </Table>
       <h2 className='fw-bold'>Servicios a Realizar</h2>
-      {trueServices.map((service) => <ul><li>{service}</li></ul>)}
+      {trueServices.map((service) => <p>{service}</p>)}
       <p>Hora de registro {fechaActual.toDateString()}</p>
       <Button className='col-12 mt-2' variant="secondary" size="lg">Confirmar Registro</Button>
     </>
