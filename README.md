@@ -43,9 +43,9 @@ Minimiza errores
 # Instalación
 - Clonar el repositorio: git clone https://github.com/ibajana/CarShop.git
 Instalar dependencias: 
-- [npm install bootstrap]
-- [npm install bootstrap react-boostrap]
-- [npm install react-hook-form]
+``` [npm install bootstrap]
+```[npm install bootstrap react-boostrap]
+```[npm install react-hook-form]
 Se recomienda el uso de Vite
 
 # Uso
