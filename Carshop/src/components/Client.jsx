@@ -16,7 +16,7 @@ export function Client() {
 
   const submitfunc = handleSubmit(
     (data) => {
-      console.log(data);
+      
       setComplete(false);
     }
   );

@@ -14,7 +14,7 @@ export function Vehicle() {
 
   const submitfunc = handleSubmit(
     (data) => {
-      console.log(data);
+      
       setCompleteVehicle(false);
     }
   );

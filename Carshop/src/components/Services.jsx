@@ -18,7 +18,7 @@ export function Services() {
 
   const handlePrint = handleSubmit(
     (data) => {
-      console.log(data);
+      
       setCompleteServices(false);
     }
   );
