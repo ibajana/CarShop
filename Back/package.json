@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon index.js"
   },
   "repository": {
     "type": "git",
@@ -15,5 +16,11 @@
     "url": "https://github.com/ibajana/CarShop/issues"
   },
   "homepage": "https://github.com/ibajana/CarShop#readme",
-  "description": ""
+  "description": "",
+  "dependencies": {
+    "express": "4.19.2"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.0"
+  }
 }
