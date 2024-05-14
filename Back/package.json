@@ -18,6 +18,7 @@
   "homepage": "https://github.com/ibajana/CarShop#readme",
   "description": "",
   "dependencies": {
+    "ejs-locals": "^1.0.2",
     "express": "4.19.2"
   },
   "devDependencies": {
