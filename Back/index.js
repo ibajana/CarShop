@@ -3,11 +3,13 @@ const app = express();
 
 const engine = require('ejs-locals');
 
-
+app.use('/',express.static(__dirname + '/public'))
 
 app.engine('ejs', engine);
 app.set('views', __dirname + '/views');
 app.set('view engine', 'ejs');
+
+
 
 
 app.get('/', (req, res) => {
@@ -15,8 +17,8 @@ app.get('/', (req, res) => {
 });
 
 
-app.get('/dist', (req, res) => {
-    res.render('dist/index.ejs');
+app.get('/first', (req, res) => {
+    res.render('index.ejs');
 });
 
 app.listen(3001, () => console.log('Example app listening on port 3001!'))
